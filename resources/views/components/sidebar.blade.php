@@ -8,7 +8,7 @@
 
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item">
+            <li class="nav-item  {{ Request::is('/') ? 'active' : '' }}">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -16,19 +16,19 @@
 
             <hr class="sidebar-divider">
 
-            <li class="nav-item">
+            <li class="nav-item  {{ Request::is('customers', 'customers/*') ? 'active' : '' }}">
                 <a class="nav-link" href="/customers">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Customers</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item  {{ Request::is('flowers', 'flowers/*') ? 'active' : '' }}"">
                 <a class="nav-link" href="/flowers">
                     <i class="fas fa-fw fa-solid fa-sun"></i>
                     <span>Flowers</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item  {{ Request::is('transaction') ? 'active' : '' }}">
                 <a class="nav-link" href="/transaction">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                     <span>Transaction</span></a>
@@ -36,7 +36,7 @@
 
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item">
+            <li class="nav-item {{ Request::is('users', 'users/*') ? 'active' : '' }}">
                 <a class="nav-link" href="/users">
                     <i class="fas fa-fw fa-solid fa-user"></i>
                     <span>Users</span></a>
