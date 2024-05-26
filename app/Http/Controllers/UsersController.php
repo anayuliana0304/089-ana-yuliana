@@ -11,7 +11,9 @@ class UsersController extends Controller
     public function index() {
          $users = User::all();
        
-         return view('users.index',compact('users'));
+         return view('users.index',[
+            'users' => $users,
+         ]);
     }
 
     public function create(){
@@ -33,43 +35,43 @@ class UsersController extends Controller
             'level' => $request->level,
         ]);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User created successfully.');
+}
+
+    public function edit($id){
+        $user = User::all()->find($id);
+
+        return view('users.edit', [
+            'user' => $user,
+        ]);
     }
 
-    public function update(string $id){
-        $users = [
-            [
-                'id' => 1,
-                'username' => 'admin',
-                'name' => 'Ana Yuliana',
-                'password' => '*********',
-                'level' => 'admin'
-            ],
-            [
-                'id' => 2,
-                'username' => 'kasir1',
-                'name' => 'Kaluna',
-                'password' => '*********',
-                'level' => 'kasir'
-            ],
-            [
-                'id' => 3,
-                'username' => 'kasir2',
-                'name' => 'Karissa',
-                'password' => '*********',
-                'level' => 'kasir'
-            ]
-        ];
-
-        $users = [];
-
-        foreach ($users as $item) {
-            if ($item["id"] == $id) {
-                $users = $item;
-            }
-        }
-        return view('users.update', [
-            "users" => $users
+    public function update(Request $request, $id){
+        $request->validate([
+            'username' => 'required|unique:users,username,'.$id,
+            'name' => 'required',
+            'password' => 'sometimes|nullable',
+            'level' => 'required'
         ]);
+
+       $user = User::findOrFail($id);
+
+       $user->username = $request->username;
+       $user->name = $request->name;
+       if($request->password){
+            $user->password = bcrypt($request->password);
+       }
+       $user->level = $request->level;
+
+       $user->save();
+
+       return redirect()->route('users.index')->with('success', 'User updated successfully.');
+    }
+
+    public function destroy($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 }

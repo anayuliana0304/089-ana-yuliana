@@ -28,19 +28,28 @@
                     <span>Flowers</span></a>
             </li>
 
-            <li class="nav-item  {{ Request::is('transaction') ? 'active' : '' }}">
-                <a class="nav-link" href="/transaction">
+            <li class="nav-item {{ Request::is('transactions', 'transactions/*') ? 'active' : '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTransaction" aria-expanded="true" aria-controls="collapseTransaction">
                     <i class="fas fa-fw fa-shopping-cart"></i>
-                    <span>Transaction</span></a>
+                    <span>Transaction</span>
+                </a>
+                <div id="collapseTransaction" class="collapse {{ Request::is('transactions', 'transactions/*') ? 'show' : '' }}" aria-labelledby="headingTransaction" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('transactions.create') }}">Sales</a>
+                        <a class="collapse-item" href="{{ route('transactions.index') }}">History</a>
+                    </div>
+                </div>
             </li>
 
-            <hr class="sidebar-divider my-0">
-
+            @if(session('level') == 'admin')
+            <hr class="sidebar-divider">
             <li class="nav-item {{ Request::is('users', 'users/*') ? 'active' : '' }}">
                 <a class="nav-link" href="/users">
                     <i class="fas fa-fw fa-solid fa-user"></i>
-                    <span>Users</span></a>
+                    <span>Users</span>
+                </a>
             </li>
+            @endif
 
             <hr class="sidebar-divider d-none d-md-block">
 

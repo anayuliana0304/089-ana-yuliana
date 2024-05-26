@@ -10,9 +10,9 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 16px;">
                                 Flowers</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">4</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $flowerCount }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-star-of-life fa-2x text-gray-300"></i>
@@ -27,9 +27,9 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="font-size: 16px;">
                                 Customers</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $customerCount }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -44,9 +44,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="font-size: 16px;">
                                                 Users</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $userCount }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>

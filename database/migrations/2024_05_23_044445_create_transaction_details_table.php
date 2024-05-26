@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaction_id')->constrained('transactions'); // ID transaksi
-            $table->foreignId('flower_id')->constrained('flowers'); // ID bunga
-            $table->integer('quantity'); // Jumlah bunga yang dibeli
-            $table->unsignedBigInteger('unit_price'); // Harga per unit
-            $table->unsignedBigInteger('subtotal'); // Subtotal
-            
+            $table->unsignedBigInteger('transaction_id');
+            $table->unsignedBigInteger('flower_id');
+            $table->integer('quantity');
+            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('total');
+            $table->timestamps();
+
+            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
+            $table->foreign('flower_id')->references('id')->on('flowers')->onDelete('cascade');
         });
     }
 

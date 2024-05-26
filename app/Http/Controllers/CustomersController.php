@@ -8,64 +8,7 @@ use App\Models\Customer;
 class CustomersController extends Controller
 {
     public function index() {
-        $customers = [
-            [
-                'id' => 1,
-                'name' => 'Jais Adnan Saleh',
-                'gender' => 'L',
-                'phone' => '089145925180',
-                'address' => 'Jalan Cilimus No.23'
-            ],
-            [
-                'id' => 2,
-                'name' => 'Ine',
-                'gender' => 'P',
-                'phone' => '085610739621',
-                'address' => 'Jalan Pesantren No.190'
-            ],
-            [
-                'id' => 3,
-                'name' => 'Neni',
-                'gender' => 'P',
-                'phone' => '089681520340',
-                'address' => 'Jalan Cililin No.04'
-            ],
-            [
-                'id' => 4,
-                'name' => 'Evri',
-                'gender' => 'P',
-                'phone' => '087812379456',
-                'address' => 'Jalan Cilimus No.1'
-            ],
-            [
-                'id' => 5,
-                'name' => 'Zalfa',
-                'gender' => 'L',
-                'phone' => '087945321678',
-                'address' => 'Jalan Cililin No.100'
-            ],
-            [
-                'id' => 6,
-                'name' => 'Zacky',
-                'gender' => 'L',
-                'phone' => '088909876543',
-                'address' => 'Jalan Raya No.201'
-            ],
-            [
-                'id' => 7,
-                'name' => 'Meisya',
-                'gender' => 'P',
-                'phone' => '086712345678',
-                'address' => 'Jalan Merdeka No.146'
-            ],
-            [
-                'id' => 8,
-                'name' => 'Eknath',
-                'gender' => 'L',
-                'phone' => '081234567890',
-                'address' => 'Jalan Merdeka No.90'
-            ]
-        ];
+        $customers = Customer::all();
         
         return view('customers.index', [
             'customers' => $customers
@@ -77,15 +20,40 @@ class CustomersController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'gender' => 'required',
+        ]);
 
+        Customer::create($request->all());
+        return redirect()->route('customers.index')->with('success', 'Customer created successfully');
     }
 
-    public function edit($id)
-    {
+    public function edit($id){
+        $customer = Customer::all()->find($id);
 
+        return view('customers.edit', [
+            'customer' => $customer,
+        ]);
     }
 
-    public function update(){
-        return view('customers.update');
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required',
+            'gender' => 'required',
+        ]);
+
+       $customer = Customer::findOrFail($id);
+
+       $customer->update($request->all());
+
+       return redirect()->route('customers.index')->with('success', 'Customer updated successfully.');
+    }
+
+    public function destroy($id){
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+
+        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
     }
 }
