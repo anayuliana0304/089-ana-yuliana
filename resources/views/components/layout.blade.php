@@ -18,6 +18,7 @@
         rel="stylesheet">
     <link href="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <link href="{{asset('assets/css/sb-admin-2.css')}}" rel="stylesheet">
 
 
@@ -75,6 +76,7 @@
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
     <script src="{{asset('assets/js/demo/datatables-demo.js')}}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 </body>
 

@@ -15,7 +15,6 @@ class Transaction extends Model
         'customer_id', 
         'date', 
         'grand_total', 
-        'packaging', 
         'cash',
         'change',
         'status'
@@ -23,6 +22,11 @@ class Transaction extends Model
 
     public function details(){
         return $this->hasMany(TransactionDetail::class);
+
+    }
+
+    public function delivery(){
+        return $this->hasOne(Delivery::class);
 
     }
 

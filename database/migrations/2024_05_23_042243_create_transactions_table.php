@@ -17,15 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('customer_id');
             $table->date('date');
-            $table->unsignedInteger('total');
-            $table->string('packaging');
+            $table->unsignedInteger('grand_total');
             $table->unsignedInteger('cash')->default(0);
             $table->unsignedInteger('change')->default(0);
-            $table->string('status')->default('process');
+            $table->enum('status', ['process', 'finished']);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 

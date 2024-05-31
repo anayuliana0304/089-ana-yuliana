@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->enum('gender', ['L', 'P']);
             $table->string('phone')->nullable();
-            $table->text('address')->nullable();
             $table->timestamps();
         });
     }

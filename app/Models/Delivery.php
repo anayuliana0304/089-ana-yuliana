@@ -10,11 +10,11 @@ class Delivery extends Model
     use HasFactory;
 
     protected $fillable = [
-        'transaction_id',
+        'transaction_id', 
         'method',
-        'date',
+        'date', 
         'time',
-        'address'
+        'address'  
     ];
 
     public function transaction()

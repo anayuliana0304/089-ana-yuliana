@@ -16,7 +16,7 @@ class Authenticate
     public function handle(Request $request, Closure $next): Response
     {
         if(session()->get("isLogged") == null && session()->get('userId') == null){
-            return redirect()->route('auth.login')->with('error', 'You need to log in first!');
+            return redirect()->route('auth.login')->with('error');
         }
         return $next($request);
     }

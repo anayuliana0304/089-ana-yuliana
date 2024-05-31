@@ -36,7 +36,7 @@ class UsersController extends Controller
         ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');
-}
+    }
 
     public function edit($id){
         $user = User::all()->find($id);

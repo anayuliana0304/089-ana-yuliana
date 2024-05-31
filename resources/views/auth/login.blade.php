@@ -24,7 +24,6 @@
 <body class="bg-gradient-primary">
 
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center center-vertical"> <!-- Added class here -->
 
@@ -49,9 +48,10 @@
                                             <input type="text" class="form-control form-control-user"
                                                 id="username" name="username" autocomplete="off" placeholder="Username">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group position-relative">
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Password">
+                                            id="password" name="password" placeholder="Password" minlength="8">
+                                            <i class="fas fa-eye position-absolute" id="togglePassword" style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
@@ -63,11 +63,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
@@ -78,6 +75,5 @@
     <script src="{{asset('assets/js/sb-admin-2.js')}}"></script>
 
 </body>
-
 
 </html>

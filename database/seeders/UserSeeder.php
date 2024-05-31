@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         //
         $admin = [
             'username' => 'admin',
-            'name' => 'Ana Yuliana',
+            'name' => 'Ana',
             'password' => bcrypt('password'),
             'level' => 'admin',
             'created_at' => now(),
@@ -26,10 +26,10 @@ class UserSeeder extends Seeder
 
         $list_user = [
             [
-                'username' => 'kasir1',
+                'username' => 'cashier1',
                 'name' => 'Kaluna',
                 'password' => bcrypt('password'),
-                'level' => 'kasir',
+                'level' => 'cashier',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

@@ -46,10 +46,21 @@ Route::prefix('flowers')->middleware(['authenticate'])->group(function(){
     Route::post('/store', [FlowersController::class, 'store'])->name('flowers.store');
     Route::put('/{id}', [FlowersController::class, 'update'])->name('flowers.update');
     Route::delete('/{id}', [FlowersController::class, 'destroy'])->name('flowers.destroy');
+
+    Route::get('/categories', [FlowersController::class, 'categoriesIndex'])->name('flowers.categories.index');
+    Route::get('/categories/create', [FlowersController::class, 'categoriesCreate'])->name('flowers.categories.create');
+    Route::get('/categories/edit/{id}', [FlowersController::class, 'categoriesEdit'])->name('flowers.categories.edit');
+
+    Route::post('/categories/store', [FlowersController::class, 'categoriesStore'])->name('flowers.categories.store');
+    Route::put('/categories/{id}', [FlowersController::class, 'categoriesUpdate'])->name('flowers.categories.update');
+    Route::delete('/categories/{id}', [FlowersController::class, 'categoriesDestroy'])->name('flowers.categories.destroy');
 });
 
 Route::prefix('transactions')->middleware(['authenticate'])->group(function(){
     Route::get('/sales', [TransactionsController::class, 'create'])->name('transactions.create');
     Route::post('/sales/store', [TransactionsController::class, 'store'])->name('transactions.store');
-    Route::get('/history', [TransactionsController::class, 'index'])->name('transactions.index');
+    Route::get('/', [TransactionsController::class, 'index'])->name('transactions.index');
+    Route::get('/{id}', [TransactionsController::class, 'show'])->name('transactions.show');
+
+    Route::put('/{id}/change-status', [TransactionsController::class, 'changeStatus'])->name('transactions.change_status');
 });

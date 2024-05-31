@@ -9,9 +9,7 @@ class Flower extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'stock'];
-
-    public $timestamps = false;
+    protected $fillable = ['name', 'price', 'category_id', 'stock'];
 
     public function reduceStock($quantity)
     {
@@ -21,6 +19,10 @@ class Flower extends Model
 
     public function details(){
         return $this->hasMany(TransactionDetail::class);
+    }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

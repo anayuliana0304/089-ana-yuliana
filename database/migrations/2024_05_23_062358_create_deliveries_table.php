@@ -19,8 +19,6 @@ return new class extends Migration
             $table->time('time')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
-
-            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
         });
     }
 

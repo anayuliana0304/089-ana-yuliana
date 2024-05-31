@@ -25,10 +25,6 @@
                                 <label for="phone">Phone</label>
                                 <input type="number" name="phone" id="phone" class="form-control"  autocomplete="off">  
                             </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <textarea name="address" id="address" class="form-control" rows="3"  autocomplete="off"></textarea>
-                            </div>
                             <div class="form-group mt-3">
                                 <input type="submit" name="submit" value="Save" class="btn btn-primary">
                             </div>
@@ -36,6 +32,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </x-layout>
 

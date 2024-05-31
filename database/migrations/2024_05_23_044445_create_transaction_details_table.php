@@ -17,11 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('flower_id');
             $table->integer('quantity');
             $table->unsignedBigInteger('price');
-            $table->unsignedBigInteger('total');
+            $table->unsignedBigInteger('subtotal');
             $table->timestamps();
-
-            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
-            $table->foreign('flower_id')->references('id')->on('flowers')->onDelete('cascade');
         });
     }
 

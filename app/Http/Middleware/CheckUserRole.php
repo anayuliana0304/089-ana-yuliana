@@ -10,8 +10,8 @@ class CheckUserRole
 {
     public function handle(Request $request, Closure $next)
     {
-        if (session('level') === 'kasir') {
-            // Redirect back or show error message
+        if (session('level') === 'cashier') {
+          
             return redirect()->back()->with('error', 'Unauthorized access.');
         }
 
